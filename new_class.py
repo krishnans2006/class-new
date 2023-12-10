@@ -30,7 +30,7 @@ input("Press enter when done...")
 
 print("\nAdd a secret with the name 'HUB_DISPATCH_PAT'...")
 webbrowser.open(PAT_URL.format(name=repo_name))
-print("Press enter when done...")
+input("Press enter when done...")
 
 clone_path = input("\nEnter the path to clone the repository to, relative to the hub: ")
 subprocess.run(["git", "submodule", "add", CLONE_URL.format(name=repo_name), clone_path])
