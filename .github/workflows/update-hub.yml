@@ -1,16 +1,14 @@
 name: Update hub
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
-  dispatch:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repo: ["krishnans2006-classes/hub"]
-    steps:
-      - name: Push to repo
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.HUB_DISPATCH_PAT }}
-          repository: ${{ matrix.repo }}
-          event-type: update
-          client-payload: '{"github": ${{ toJson(github) }}}'
+  trigger-hub-update:
+    uses: krishnans2006-classes/actions/.github/workflows/dispatch-hub-update.yml@main
+    with:
+      sha: ${{ github.sha }}
+      repository: ${{ github.repository }}
+    secrets:
+      HUB_DISPATCH_PAT: ${{ secrets.HUB_DISPATCH_PAT }}
