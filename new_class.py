@@ -3,9 +3,9 @@ import subprocess
 import time
 import webbrowser
 
-REPO_URL = "https://github.com/new?template_name=template&template_owner=krishnans2006-classes&owner=krishnans2006-classes&name={name}&visibility=private"
-PAT_URL = "https://github.com/krishnans2006-classes/{name}/settings/secrets/actions/new"
-CLONE_URL = "git@github.com:krishnans2006-classes/{name}"
+REPO_URL = "https://github.com/new?template_name=class-template&template_owner=krishnans2006&owner=krishnans2006&name=class-{name}&visibility=private"
+PAT_URL = "https://github.com/krishnans2006/class-{name}/settings/secrets/actions/new"
+CLONE_URL = "git@github.com:krishnans2006/class-{name}"
 
 file_path = os.path.realpath(__file__)
 
@@ -28,7 +28,7 @@ webbrowser.open(REPO_URL.format(name=repo_name))
 time.sleep(5)
 input("Press enter when done...")
 
-print("\nAdd a secret with the name 'HUB_DISPATCH_PAT'...")
+print("\nAdd a secret with the name 'UPDATE_SUBMODULES_PAT'...")
 webbrowser.open(PAT_URL.format(name=repo_name))
 input("Press enter when done...")
 
