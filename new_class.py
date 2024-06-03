@@ -28,11 +28,11 @@ webbrowser.open(REPO_URL.format(name=repo_name))
 time.sleep(5)
 input("Press enter when done...")
 
-print("\nAdd a secret with the name 'UPDATE_SUBMODULES_PAT'...")
+print("\nAdd a secret with the name 'UPDATE_SUBMODULE_PAT'...")
 webbrowser.open(PAT_URL.format(name=repo_name))
 input("Press enter when done...")
 
-clone_path = input("\nEnter the path to clone the repository to, relative to the hub: ")
+clone_path = input("\nEnter the path to clone the repository to, relative to the root of the repository: ")
 subprocess.run(["git", "submodule", "add", CLONE_URL.format(name=repo_name), clone_path])
 subprocess.run(["git", "add", ".gitmodules", clone_path])
 subprocess.run(["git", "commit", "-m", f"Add {repo_name} class"])
